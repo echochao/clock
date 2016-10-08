@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>时钟</title>
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<style>
+			#clock {
+				height: 400px;
+				width: 400px;
+				border-radius: 50%;
+				margin: 0 auto;
+				border: 10px solid #000000;
+				text-align: center;
+				position: relative;
+				box-shadow: 0 0 10px inset;
+			}
+			
+			#point {
+				height: 10px;
+				width: 10px;
+				border-radius: 50%;
+				background-color: #000000;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -5px;
+				margin-top: -5px;
+			}
+			
+			#hour_line {
+				height: 100px;
+				width: 4px;
+				border-radius: 4px;
+				background-color: #000000;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -2px;
+				margin-top: -100px;
+				transform-origin: 50% 100%;
+				box-shadow: -2px 0 4px;
+			}
+			
+			#minute_line {
+				height: 150px;
+				width: 2px;
+				border-radius: 2px;
+				background-color: #000000;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -1px;
+				margin-top: -140px;
+				transform-origin: center 140px;
+				box-shadow: -2px -2px 4px;
+			}
+			
+			#second_line {
+				height: 190px;
+				width: 1px;
+				border-radius: 1px;
+				background-color: #000000;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left: -0.5px;
+				margin-top: -170px;
+				transform-origin: center 170px;
+				box-shadow: -1px -1px 2px;
+			}
+			.line{
+				height: 20px;
+				width: 2px;
+				background-color: #000000;
+				position: absolute;
+				left: 50%;
+				margin-left: -1px;
+				transform-origin: 50% 200px;
+			}
+			.num{
+				height: 20px;
+				width: 20px;
+				font-size: 26px;
+				line-height: 20px;
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				margin-left: -10px;
+				margin-top: -10px;
+			}
+		</style>
+	</head>
+	<div id="clock">
+		<div id=point></div>
+		<div id="hour_line"></div>
+		<div id="minute_line"></div>
+		<div id="second_line"></div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			//创建时钟的刻度
+			for(var i = 0; i < 60; i++) {
+				var clock = $("#clock");
+				var div = $("<div></div>")
+				clock.append(div);			
+				div.addClass("line");
+				var div_deg = 6 * i + "deg";					
+				div.css("transform","rotate(" + div_deg + ")");
+			}
+			//数值
+			for(var i=0;i<12;i++){
+				var clock=$("#clock");
+				var div=$("<div></div>");
+				clock.append(div);
+				div.text(""+i+"");
+				div.addClass("num");
+				var div_deg=30*i/180*Math.PI;
+				var x=Math.sin(div_deg)*160+"px";
+				var y=180-Math.cos(div_deg)*160+"px";
+				div.css("transform","translate("+x+","+y+")");
+			}
+			//时针，分针，秒针
+			function myClock() {
+				var date = new Date();
+				var s = date.getSeconds();
+				var m = date.getMinutes();
+				var h = date.getHours();
+				var s_deg = 6 * s + "deg";
+				var s_line = $("#second_line");
+				s_line.css({"transform":"rotate(" +s_deg + ")"});
+				var m_deg = 6 * m + 0.1 * s + "deg";
+				var m_line = $("#minute_line");
+				m_line.css({"transform":"rotate(" +m_deg + ")"});
+				var h_deg = 30 * h + 0.5 * m + 0.5 / 60 * s + "deg";
+				var h_line = $("#hour_line");
+				h_line.css({"transform":"rotate(" +h_deg + ")"});
+			}
+			setInterval(myClock,1000);
+		})
+	</script>
+	</body>
+
+</html>
