@@ -97,6 +97,8 @@
 			}
 		</style>
 	</head>
+<html>
+	<body>
 	<div id="clock">
 		<div id=point></div>
 		<div id="hour_line"></div>
@@ -134,8 +136,7 @@
 				var s_deg = 6 * s + "deg";
 				var s_line = $("#second_line");
 				s_line.css({"transform":"rotate(" +s_deg + ")"});
-				var m_deg = 6 * m + 0.1 * s + "deg";
-				var m_line = $("#minute_line");
+				var m_deg = 6 * m + 0.1 * s + "deg";				var m_line = $("#minute_line");
 				m_line.css({"transform":"rotate(" +m_deg + ")"});
 				var h_deg = 30 * h + 0.5 * m + 0.5 / 60 * s + "deg";
 				var h_line = $("#hour_line");
