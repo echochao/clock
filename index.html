@@ -116,7 +116,7 @@
 				clock.append(div);
 				div.text(""+i+"");
 				div.addClass("num");
-				var x=Matn.round(Math.sin(30*i/180*Math.PI)*160)+"px";
+				var x=Math.round(Math.sin(30*i/180*Math.PI)*160)+"px";
 				var y=Math.round(180-Math.cos(30*i/180*Math.PI)*160)+"px";
 				div.css("transform","translate("+x+","+y+")");
 			}
