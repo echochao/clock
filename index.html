@@ -116,9 +116,8 @@
 				clock.append(div);
 				div.text(""+i+"");
 				div.addClass("num");
-				var div_deg=30*i/180*Math.PI;
-				var x=Math.sin(div_deg)*160+"px";
-				var y=180-Math.cos(div_deg)*160+"px";
+				var x=Math.sin(30*i/180*Math.PI)*160+"px";
+				var y=180-Math.cos(30*i/180*Math.PI)*160+"px";
 				div.css("transform","translate("+x+","+y+")");
 			}
 			//时针，分针，秒针
