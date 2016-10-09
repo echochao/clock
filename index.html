@@ -141,7 +141,42 @@
 				var h_line = $("#hour_line");
 				h_line.css({"transform":"rotate(" +h_deg + ")"});
 			}
-			setInterval(myClock,1000);
+			function addTime() {
+				var div = $("<div></div>");
+				div.attr("id", "time");
+				$("#clock").append(div);
+			}
+
+			function setTime() {
+				var date = new Date();
+				var s = date.getSeconds();
+				var m = date.getMinutes();
+				var h = date.getHours();
+				$("#time").html("<span>" + h + ":</span><span>" + m + ":</span><span>" + s + "</span>")
+			}
+
+			function addDate() {
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth();
+				var day = date.getDate();
+				var div = $("<div></div>");
+				div.attr("id", "date");
+				$("#clock").append(div);
+			}
+
+			function setDate() {
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth();
+				var day = date.getDate();
+				$("#date").html("<span>" + year + "年</span><span>" + month + "月</span><span>" + day + "日</span>")
+			}
+			addDate();
+			addTime();
+			setInterval(myClock, 1000);
+			setInterval(setTime, 1000);
+			setInterval(setDate, 1000);
 		})
 	</script>
 	</body>
