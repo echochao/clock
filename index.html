@@ -164,8 +164,8 @@
 			function setTime() {
 				var date = new Date();
 				var s = function(){var a=date.getSeconds();if(a<10){return ("0"+a)}else{return a}}();
-				var m = date.getMinutes()+1;
-				var h = date.getHours();
+				var m = function(){var a=date.getMinutes();if(a<10){return ("0"+a)}else{return a}}();
+				var h = function(){var a=date.getHours();if(a<10){return ("0"+a)}else{return a}}();
 				$("#time").html("<span>" + h + ":</span><span>" + m + ":</span><span>" + s + "</span>")
 			}
 
