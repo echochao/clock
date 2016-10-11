@@ -169,10 +169,6 @@
 			}
 
 			function addDate() {
-				var date = new Date();
-				var year = date.getFullYear();
-				var month = date.getMonth()+1;
-				var day = date.getDate();
 				var div = $("<div></div>");
 				div.attr("id", "date");
 				$("#clock").append(div);
@@ -181,7 +177,7 @@
 			function setDate() {
 				var date = new Date();
 				var year = date.getFullYear();
-				var month = date.getMonth();
+				var month = date.getMonth()+1;
 				var day = date.getDate();
 				$("#date").html("<span>" + year + "年</span><span>" + month + "月</span><span>" + day + "日</span>")
 			}
