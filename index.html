@@ -163,7 +163,7 @@
 			function setTime() {
 				var date = new Date();
 				var s = date.getSeconds();
-				var m = date.getMinutes();
+				var m = date.getMinutes()+1;
 				var h = date.getHours();
 				$("#time").html("<span>" + h + ":</span><span>" + m + ":</span><span>" + s + "</span>")
 			}
